@@ -68,7 +68,6 @@ export class CompareTableComponent {
                         headerName: 'Planning', field: 'planning'
                     }]);
                 this.rowData = data;
-                this.gridOptions.columnApi.autoSizeAllColumns();
             });
     }
 }
