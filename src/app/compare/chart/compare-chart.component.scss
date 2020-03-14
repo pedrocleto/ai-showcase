@@ -1,0 +1,53 @@
+@import "~@angular/material/theming";
+// Include non-theme styles for core.
+@include mat-core();
+
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-pink, A200, A100, A400);
+$theme: mat-light-theme($primary, $accent);
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 115px);
+  flex: 1;
+  overflow: auto;
+
+  .chart-form-container {
+    display: flex;
+    flex: 1;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    > form {
+      display: flex;
+      flex-direction: column;
+      width: 350px;
+
+      .panel-group {
+        display: flex;
+        flex-direction: column;
+        border: dashed 1px mat_color($primary);
+        margin-left: 10px;
+        padding-right: 8px;
+        padding-left: 8px;
+        padding-bottom: 8px;
+        flex: 1;
+        > span {
+          position: relative;
+          display: block;
+          top: -10px;
+          left: 2px;
+          background-color: white;
+          width: fit-content;
+        }
+
+        .input-fields {
+          display: flex;
+          flex-direction: column;
+          flex: 1;
+          justify-content: center;
+        }
+      }
+    }
+  }
+}

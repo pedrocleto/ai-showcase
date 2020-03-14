@@ -1,0 +1,12 @@
+<nav mat-tab-nav-bar>
+    <a mat-tab-link [routerLink]="['./overview']" routerLinkActive #rla="routerLinkActive" [active]="rla.isActive">
+        Overview
+    </a>
+    <a mat-tab-link [routerLink]="['./table']" routerLinkActive #rla2="routerLinkActive" [active]="rla2.isActive">
+        Table
+    </a>
+    <a mat-tab-link [routerLink]="['./chart']" routerLinkActive #rla3="routerLinkActive" [active]="rla3.isActive">
+        Chart
+    </a>
+</nav>
+<router-outlet></router-outlet>

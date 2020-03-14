@@ -1,0 +1,24 @@
+<div class='chart-form-container'>
+    <form #form='ngForm'>
+        <div class='panel-group'>
+            <span>Agents</span>
+            <div class='input-fields'>
+                <ng-select [items]='agents | async' [multiple]='true' bindLabel='name' [(ngModel)]='selectedAgents'
+                    name='agentSelection' #agentSelection='ngModel' required placeholder='Select agents'></ng-select>
+                <div *ngIf='agentSelection.invalid && agentSelection.errors'>
+
+                </div>
+
+                <mat-form-field>
+                    <mat-label>Chart Title</mat-label>
+                    <input matInput type='text' [(ngModel)]='chartTitle' name='title' placeholder='Title' />
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+
+    <highcharts-chart [Highcharts]='Highcharts' [options]='chartOptions' [callbackFunction]='getChartInstance.bind(this)'
+        constructorType='chart' oneToOne='true' [(update)]='updateFromInput'
+        style='width: 100%; height: 100%; display: block;'>
+    </highcharts-chart>
+</div>

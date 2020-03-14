@@ -1,0 +1,39 @@
+@import "~@angular/material/theming";
+// Include non-theme styles for core.
+@include mat-core();
+
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-pink, A200, A100, A400);
+$theme: mat-light-theme($primary, $accent);
+
+:host {
+  display: flex;
+  flex: 1;
+  height: calc(100vh - 115px);
+  .content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    .overview {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      .category {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid mat_color($primary);
+        border-radius: 50px;
+        justify-content: center;
+        align-items: center;
+        width: 250px;
+        height: 250px;
+        border-radius: 250px;
+        &:not(:first-child) {
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+}
