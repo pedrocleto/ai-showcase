@@ -1,4 +1,7 @@
 <div class="content">
+    <mat-form-field>
+        <input matInput type='text' (keyup)="quickFilterChanged($event)" name='title' placeholder='Search...' />
+    </mat-form-field>
     <ag-grid-angular [gridOptions]='gridOptions' [rowData]='rowData' [columnDefs]='columnDefs' [modules]='modules'
         class="ag-theme-balham" (gridReady)="onGridReady($event)">
     </ag-grid-angular>

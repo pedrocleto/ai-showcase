@@ -2,13 +2,15 @@
     <ng-select [items]='agents' bindLabel='name' [(ngModel)]='selectedAgent' placeholder='Select agent'
         (ngModelChange)='selectionChanged()'>
     </ng-select>
-
+    <h3>
+        {{selectedAgent?.name}} Agent Average Scores
+    </h3>
     <div class="overview">
         <div *ngFor="let category of averageCategories" class="category mat-elevation-z6">
-            <span>
+            <span class="mat-body-strong">
                 {{category.label}}
             </span>
-            <span>
+            <span class="mat-body-strong">
                 {{category.value}}
             </span>
         </div>

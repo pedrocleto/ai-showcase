@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CompareService } from '../services/compare.service';
+import { getCategoryName, calculateCategoryAverage } from '../../share/helpers';
 
 @Component({
     selector: 'app-overview',
@@ -17,21 +18,14 @@ export class OverviewComponent {
             this.selectedAgent = data[0];
             this.selectionChanged();
         });
-
-    }
-
-    getCategoryName(category) {
-        return category.charAt(0).toUpperCase() + category.slice(1);
     }
 
     selectionChanged() {
         this.averageCategories = [];
         if (this.selectedAgent) {
             ['memory', 'logic', 'planning'].forEach(category => {
-                const categoryFields = this.selectedAgent.tasks.filter(filtered => filtered.category === category);
-                const categoryScores = categoryFields.map(fields => fields.score);
-                const totalAverage = categoryScores.reduce((total, value) => total + value, 0) / categoryScores.length;
-                this.averageCategories.push({ label: this.getCategoryName(category), value: totalAverage });
+                const totalAverage = calculateCategoryAverage(this.selectedAgent.tasks, category);
+                this.averageCategories.push({ label: getCategoryName(category), value: totalAverage });
             });
         }
     }

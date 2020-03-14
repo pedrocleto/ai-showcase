@@ -9,16 +9,23 @@ $theme: mat-light-theme($primary, $accent);
 :host {
   display: flex;
   flex: 1;
+  flex-direction: column;
   height: calc(100vh - 115px);
   .content {
     display: flex;
     flex-direction: column;
     flex: 1;
+    align-items: center;
+    padding-top: 15px;
+
+    > ng-select {
+      width: 100%;
+      max-width: 600px;
+    }
     .overview {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      justify-content: center;
 
       .category {
         display: flex;

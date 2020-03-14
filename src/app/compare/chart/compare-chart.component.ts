@@ -4,7 +4,8 @@ import { NgForm } from '@angular/forms';
 import { filter, debounceTime } from 'rxjs/operators';
 import { Subscription } from 'rxjs';
 import * as Highcharts from 'highcharts';
-import { Agent } from 'src/app/api';
+import { Agent } from '../../api';
+import { getCategoryName, calculateCategoryAverage } from '../../share/helpers';
 
 @Component({
     selector: 'app-compare-chart',
@@ -69,14 +70,10 @@ export class CompareChartComponent implements AfterViewInit, OnDestroy {
         }
     }
 
-
     onFormValueChanged() {
         if (this.form && this.form.valid) {
             this.buildChart();
         }
-    }
-    getCategoryName(category) {
-        return category.charAt(0).toUpperCase() + category.slice(1);
     }
 
     buildChart() {
@@ -85,10 +82,8 @@ export class CompareChartComponent implements AfterViewInit, OnDestroy {
         this.selectedAgents.forEach((element: Agent) => {
             const dataObject = { id: element.id, name: element.name, chartData: [] };
             ['memory', 'logic', 'planning'].forEach(category => {
-                const categoryFields = element.tasks.filter(filtered => filtered.category === category);
-                const categoryScores = categoryFields.map(fields => fields.score);
-                const totalAverage = categoryScores.reduce((total, value) => total + value, 0) / categoryScores.length;
-                dataObject.chartData.push([this.getCategoryName(category), totalAverage]);
+                const totalAverage = calculateCategoryAverage(element.tasks, category);
+                dataObject.chartData.push([getCategoryName(category), totalAverage]);
             });
             dataSet.push(dataObject);
         });
@@ -106,7 +101,7 @@ export class CompareChartComponent implements AfterViewInit, OnDestroy {
         });
         return series;
     }
-    
+
     ngOnDestroy() {
         if (this.subscriptionOnFormEvent) {
             this.subscriptionOnFormEvent.unsubscribe();

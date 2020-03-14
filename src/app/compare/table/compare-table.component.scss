@@ -4,6 +4,7 @@
   height: calc(100vh - 115px);
   .content {
     display: flex;
+    flex-direction: column;
     flex: 1;
     margin: 5px;
     ag-grid-angular {

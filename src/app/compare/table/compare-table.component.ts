@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AllCommunityModules, ColDef, ValueGetterParams, GridOptions, ColumnApi, GridApi } from '@ag-grid-community/all-modules';
 import { finalize } from 'rxjs/operators';
 import { CompareService } from '../services/compare.service';
+import { calculateCategoryAverage } from '../../share/helpers';
 
 @Component({
     selector: 'app-compare-table',
@@ -29,10 +30,7 @@ export class CompareTableComponent {
             if (['memory', 'logic', 'planning'].indexOf(column.field) !== -1) {
                 column.valueGetter = (valueGetterObject: ValueGetterParams) => {
                     if (valueGetterObject && valueGetterObject.data.hasOwnProperty('tasks')) {
-                        const categoryFields = valueGetterObject.data.tasks.filter(filtered => filtered.category === column.field);
-                        const categoryScores = categoryFields.map(fields => fields.score);
-                        const totalAverage = categoryScores.reduce((total, value) => total + value, 0) / categoryScores.length;
-                        return totalAverage;
+                        return calculateCategoryAverage(valueGetterObject.data.tasks, column.field);
                     }
                     return 0;
 
@@ -40,6 +38,10 @@ export class CompareTableComponent {
             }
             this.columnDefs.push(column);
         });
+    }
+
+    quickFilterChanged(event) {
+        this.gridOptions.api.setQuickFilter(event.target.value);
     }
 
     hasGridOptions(gridOptions) {
@@ -62,11 +64,8 @@ export class CompareTableComponent {
                     { headerName: 'Name', field: 'name' },
                     { headerName: 'Description', field: 'description', tooltipField: 'description', minWidth: 550 },
                     { headerName: 'Memory', field: 'memory' },
-                    {
-                        headerName: 'Logic', field: 'logic'
-                    }, {
-                        headerName: 'Planning', field: 'planning'
-                    }]);
+                    { headerName: 'Logic', field: 'logic' },
+                    { headerName: 'Planning', field: 'planning' }]);
                 this.rowData = data;
             });
     }
