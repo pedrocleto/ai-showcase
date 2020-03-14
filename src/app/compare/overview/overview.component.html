@@ -5,6 +5,9 @@
     <h3>
         {{selectedAgent?.name}} Agent Average Scores
     </h3>
+    <h5>
+        {{selectedAgent?.description}}
+    </h5>
     <div class="overview">
         <div *ngFor="let category of averageCategories" class="category mat-elevation-z6">
             <span class="mat-body-strong">

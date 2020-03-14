@@ -1,8 +1,9 @@
+import { AllCommunityModules, ColDef, GridOptions, ValueGetterParams } from '@ag-grid-community/all-modules';
 import { Component } from '@angular/core';
-import { AllCommunityModules, ColDef, ValueGetterParams, GridOptions, ColumnApi, GridApi } from '@ag-grid-community/all-modules';
 import { finalize } from 'rxjs/operators';
-import { CompareService } from '../services/compare.service';
 import { calculateCategoryAverage } from '../../share/helpers';
+import { CompareService } from '../services/compare.service';
+import { Agent } from '../../api';
 
 @Component({
     selector: 'app-compare-table',
@@ -59,7 +60,7 @@ export class CompareTableComponent {
         }
         this.compareService.getAllAgents()
             .pipe(finalize(() => this.hideOverlay()))
-            .subscribe((data: any) => {
+            .subscribe((data: Agent[]) => {
                 this.setColumns([
                     { headerName: 'Name', field: 'name' },
                     { headerName: 'Description', field: 'description', tooltipField: 'description', minWidth: 550 },

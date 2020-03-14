@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CompareService } from '../services/compare.service';
 import { getCategoryName, calculateCategoryAverage } from '../../share/helpers';
+import { Agent } from '../../api';
 
 @Component({
     selector: 'app-overview',
@@ -8,12 +9,12 @@ import { getCategoryName, calculateCategoryAverage } from '../../share/helpers';
     styleUrls: ['./overview.component.scss'],
 })
 export class OverviewComponent {
-    agents;
-    selectedAgent;
+    agents: Agent[];
+    selectedAgent: Agent;
     averageCategories;
 
     constructor(private compareService: CompareService) {
-        this.compareService.getAllAgents().subscribe((data) => {
+        this.compareService.getAllAgents().subscribe((data: Agent[]) => {
             this.agents = data;
             this.selectedAgent = data[0];
             this.selectionChanged();

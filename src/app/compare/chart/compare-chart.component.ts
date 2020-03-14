@@ -1,11 +1,11 @@
-import { Component, ViewChild, OnDestroy, AfterViewInit } from '@angular/core';
-import { CompareService } from '../services/compare.service';
+import { AfterViewInit, Component, OnDestroy, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { filter, debounceTime } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
 import * as Highcharts from 'highcharts';
+import { Subscription } from 'rxjs';
+import { debounceTime, filter } from 'rxjs/operators';
 import { Agent } from '../../api';
-import { getCategoryName, calculateCategoryAverage } from '../../share/helpers';
+import { calculateCategoryAverage, getCategoryName } from '../../share/helpers';
+import { CompareService } from '../services/compare.service';
 
 @Component({
     selector: 'app-compare-chart',
@@ -13,9 +13,9 @@ import { getCategoryName, calculateCategoryAverage } from '../../share/helpers';
     styleUrls: ['./compare-chart.component.scss']
 })
 export class CompareChartComponent implements AfterViewInit, OnDestroy {
-    selectedAgents;
+    selectedAgents: Agent[];
     agents;
-    chartTitle;
+    chartTitle: string;
 
     @ViewChild('form', { static: false })
     form: NgForm;
