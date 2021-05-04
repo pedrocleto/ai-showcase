@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { CompareService } from '../services/compare.service';
 import { CompareTableComponent } from './compare-table.component';
@@ -54,7 +54,7 @@ describe('CompareTableComponent', () => {
     }]));
     mockCompareService.searchAgentByName.and.returnValue(of([]));
     mockCompareService.getAgentById.and.returnValue(of([]));
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [AgGridModule.withComponents()],
             declarations: [CompareTableComponent],

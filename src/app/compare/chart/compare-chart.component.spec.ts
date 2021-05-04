@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -59,7 +59,7 @@ describe('CompareChartComponent', () => {
     }]));
     mockCompareService.searchAgentByName.and.returnValue(of([]));
     mockCompareService.getAgentById.and.returnValue(of([]));
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [FormsModule, HighchartsChartModule, MatTabsModule,
                 BrowserAnimationsModule,
@@ -83,7 +83,7 @@ describe('CompareChartComponent', () => {
         expect(component).toBeTruthy();
     });
 
-    it('should select agents', async(() => {
+    it('should select agents', waitForAsync(() => {
         fixture.debugElement.query(By.css('ng-select'))
             .triggerEventHandler('ngModelChange', [{
                 id: 2,

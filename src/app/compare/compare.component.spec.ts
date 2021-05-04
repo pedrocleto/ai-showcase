@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { CompareComponent } from './compare.component';
 import { CompareService } from './services/compare.service';
@@ -17,7 +17,7 @@ describe('CompareComponent', () => {
     mockCompareService.getAllAgents.and.returnValue(of([]));
     mockCompareService.searchAgentByName.and.returnValue(of([]));
     mockCompareService.getAgentById.and.returnValue(of([]));
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [RouterTestingModule, MatTabsModule],
             declarations: [CompareComponent],
