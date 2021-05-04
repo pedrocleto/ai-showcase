@@ -11,8 +11,8 @@
   },
   "private": true,
   "dependencies": {
-    "@ag-grid-community/all-modules": "^22.1.1",
-    "@ag-grid-community/angular": "^22.1.2",
+    "@ag-grid-community/all-modules": "^25.2.0",
+    "@ag-grid-community/angular": "^25.2.0",
     "@angular/animations": "~9.0.6",
     "@angular/cdk": "^9.1.2",
     "@angular/common": "~9.0.6",
@@ -23,9 +23,9 @@
     "@angular/platform-browser": "~9.0.6",
     "@angular/platform-browser-dynamic": "~9.0.6",
     "@angular/router": "~9.0.6",
-    "@ng-select/ng-select": "^3.7.3",
-    "highcharts": "^8.0.4",
-    "highcharts-angular": "^2.4.0",
+    "@ng-select/ng-select": "^6.1.0",
+    "highcharts": "^9.1.0",
+    "highcharts-angular": "^2.10.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
