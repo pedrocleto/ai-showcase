@@ -3,15 +3,13 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
 export class ErrorHandlerService extends ErrorHandler {
-    constructor(private snackBar: MatSnackBar, private zone: NgZone
-    ) {
-        super();
-    }
+  constructor(private snackBar: MatSnackBar, private zone: NgZone) {
+    super();
+  }
 
-    handleError(error: any): void {
-        this.zone.run(() => {
-            this.snackBar.open(error.message, 'Dismiss');
-        });
-    }
-
+  handleError(error: any): void {
+    this.zone.run(() => {
+      this.snackBar.open(error.message, 'Dismiss');
+    });
+  }
 }

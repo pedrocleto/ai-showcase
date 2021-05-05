@@ -9,18 +9,15 @@ import { ErrorHandlerService } from './compare/services/error-handler.service';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     MatToolbarModule,
     MatSnackBarModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
-  providers: [{ provide: ErrorHandler, useClass: ErrorHandlerService },
-  ],
-  bootstrap: [AppComponent]
+  providers: [{ provide: ErrorHandler, useClass: ErrorHandlerService }],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

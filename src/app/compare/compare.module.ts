@@ -1,4 +1,8 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
+import {
+  NgModule,
+  CUSTOM_ELEMENTS_SCHEMA,
+  NO_ERRORS_SCHEMA,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CompareRoutingModule } from './compare-routing.module';
 import { CompareComponent } from './compare.component';
@@ -14,19 +18,22 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { OverviewComponent } from './overview/overview.component';
 
 @NgModule({
-    declarations: [CompareComponent, OverviewComponent, CompareTableComponent, CompareChartComponent],
-    imports: [
-        FormsModule,
-        CommonModule,
-        MatTabsModule,
-        MatInputModule,
-        NgSelectModule,
-        CompareRoutingModule,
-        HighchartsChartModule,
-        AgGridModule.withComponents(),
-    ],
-    providers: [CompareService]
+  declarations: [
+    CompareComponent,
+    OverviewComponent,
+    CompareTableComponent,
+    CompareChartComponent,
+  ],
+  imports: [
+    FormsModule,
+    CommonModule,
+    MatTabsModule,
+    MatInputModule,
+    NgSelectModule,
+    CompareRoutingModule,
+    HighchartsChartModule,
+    AgGridModule.withComponents(),
+  ],
+  providers: [CompareService],
 })
-export class CompareModule {
-
-}
+export class CompareModule {}
