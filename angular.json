@@ -30,8 +30,6 @@
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "./node_modules/@ng-select/ng-select/themes/material.theme.css",
-              "./node_modules/@ag-grid-community/all-modules/dist/styles/ag-grid.scss",
-              "./node_modules/@ag-grid-community/all-modules/dist/styles/ag-theme-balham/sass/ag-theme-balham.scss",
               "src/styles.scss"
             ],
             "scripts": []
